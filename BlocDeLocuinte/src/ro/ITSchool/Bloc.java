@@ -1,31 +1,37 @@
 package ro.ITSchool;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bloc {
+
     private String numarBloc;
-    private Etaj etaj;
-    private Apartament apartament;
+    private List<Etaj> etaje; // un bloc poate avea mai multe etaje asa ca le vom stoca intr-o lista
 
     public Bloc(String numarBloc) {
         this.numarBloc = numarBloc;
-    }
-    public void adaugaEtaj(Etaj etajul0){
-
-    }
-    public void afiseazaBloc(){
-
-
-
+        this.etaje = new ArrayList<>();
     }
 
-    public String getNumarBloc() {
-        return numarBloc;
+    /**
+     * Metoda de a adauga un nou etaj pentru bloc
+     * @param etaj etajul nou al blocului
+     */
+    public void adaugaEtaj(Etaj etaj) {
+        this.etaje.add(etaj);
     }
 
-    public Etaj getEtaj() {
-        return etaj;
+    /**
+     * Afisarea unui bloc
+     */
+    public void afiseazaBloc() {
+        // afisam numarul blocului
+        System.out.println(numarBloc);
+
+        //parcurgem lista de etaje si il afisam pe fiecare in parte apeland metoda de afisare
+        for(Etaj e: etaje) {
+            e.afiseazaEtaj();
+        }
     }
 
-    public Apartament getApartament() {
-        return apartament;
-    }
 }
